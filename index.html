@@ -1,60 +1,104 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Core jam DOM</title>
-    <link rel="stylesheet" href="css\style.css">
-    <link href ="css/font-awesome.min.css" rel="stylesheet" />
-    </head>
-<body>
-    <main class="conteiner">
-   
-    <div >
-        <h1>Lorem Ipsum</h1>
-        <p>Lorem Ipsum dolor sit amet, consectetuer adipiscingelit. Duis tellus. Donec ante dolor, iaculis nec, gravidaac, cursus in, eros. Mauris vestibulum, felis et egestasullamcorper, purus nibh vehicula sem, eu egestas antenisl non justo. Fusce tincidunt, lorem nev dapibusconsectetuer, leo orci mollis ipsum, eget suscipit erospurus in ante.</p>
-        <p>At ipsum vitae est lacinia tincidunt. Maecenas elit orci,gravida ut, molestie non, venenatis vel, lorem. Sedlacinia. Suspendisse potenti. Sed ultricies cursuslectus. In id magna sit amet nibh suspicit euismod.Integer enim. Donec sapien ante, accumsan ut,sodales commodo, auctor quis, lacus. Maecenas a elitlacinia urna posuere sodales. Curabitur pede pede,molestie id, blandit vitae, varius ac, purus. Mauris atipsum vitae est lacinia tincidunt. Maecenas elit orci, gravida ut, molestie non, venenatis vel,lorem. Sed lacinia. Suspendisse potenti. Sed ultrucies cursus lectus. In id magna sit amet nibhsuspicit euismod. Integer enim. Donec sapien ante, accumsan ut, sodales commodo, auctorquis, lacus. Maecenas a elit lacinia urna posuere sodales. Curabitur pede pede, molestie id,blandit vitae, varius ac, purus</p>
-        <p>Morbi dictum. Vestibulum adipiscing pulvinar quam. In aliquam rhoncus sem. In mi erat, sodaleseget, pretium interdum, malesuada ac, augue. Aliquam sollicitudin, massa ut vestibulum posuere, massa arcu elementumpurus, eget vehicula lorem metus vel libero. Sed in dui id lectus commodo elementum. Etiam rhoncus tortor. Proin alorem. Ut nec velit. Quisque varius. Proin nonummy justo dictum sapien tincidunt iaculis. Duis lobortis pellentesque risus.Aenean ut tortor imperdiet dolor scelerisque bibendum. Fusce metus nibh, adipiscing id, ullamcorper at, consequat a,nulla.</p>
-        <p>Phasellus orci. Etiam tempor elit auctor magna. Nullam nibh velit, vestibulum ut, eleifend non, pulvinar eget, enim. Classaptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Integer velit mauris, convallis acongue sed, placerat id, odio. Etiam venenatis tortor sed lectus. Nulla non orci. In egestas porttitor quam. Duis nec diameget nibh mattis tempus. Curabitus accumsan pede id odio. Nunc vitae libero. Aenean condimentum diam et turpis.Vestibulum non risus. Ut consectetuer gravida elit. Aenean est nunc, varius sed, alquam eu, feugiat sit amet, metus. Sedvenenatis odio id eros.</p>
-        <p>Phasellus placerat purus vel mi. In hac habitasse platea dictumst. Donec aliquam porta odio. Ut facilisis. Donec ornareipsum ut massa. In tellus tellus, imperdiet ac, accumsan at, aliquam vitae, velit.</p>
-    </div>
-    
-    <div  id="notification_container" class="box">
-        
-        <span id="closeButton" class="close"></span>
-
-        <div class="slides fade email-tip">
-            <h3 class="head_slides">EMAIL TIP OF THE DAY</h3>
-            <p id='tip' class="text_slides"></p>
+    <link rel="stylesheet" href="css\style.css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Static data base for days of the week</h1>
+    </header>
+    <main class="main">
+      <div class="main__description">
+        <p class="main__description__next">
+          If you want to see the next day, click “Next” or press “=>” on the
+          keyboard.
+        </p>
+        <p class="main__description__prev">
+          If you want to see the previous day, click “Prev” or press “<=” on the
+          keyboard.
+        </p>
+        <p class="main__description__esc">
+          If you want to close the window notification without changes, click
+          “X” or press “Esc” on the keyboard.
+        </p>
+        <p class="main__description__enter">
+          If you want to show information about your selected day, click “Enter”
+          or press “Enter” on the keyboard.
+        </p>
+      </div>
+      <div class="main__show-current-day">
+        <p></p>
+      </div>
+      <div id="notificationContainer" class="notification-container">
+        <div class="notification-container__slides">
+          <h3 class="notification-container__head-slides"></h3>
+          <p id="textSlides" class="notification-container__text-slides"></p>
         </div>
-        
-        <div class="control">
-            
-          
-                <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
-                <label for="checkbox_id">Disaible Tips</label>
-         
-           
-            <div class="navigation">
-                <a class="prev arrow" href="#" onclick="plusIndex(-1)">prev</a>
-                <ul id="navdots" class="navdots" style="text-align:centr;">
-                    <span class="dots" onclick="currentSlide(1)"></span>
-                    <span class="dots" onclick="currentSlide(2)"></span>
-                    <span class="dots active" onclick="currentSlide(3)"></span>
-                    <span class="dots" onclick="currentSlide(4)"></span>
-                    <span class="dots" onclick="currentSlide(5)"></span>
-                    <span class="dots" onclick="currentSlide(6)"></span>
-                </ul>
-                <a class="next arrow" href="#" onclick="plusIndex(1)">next</a>
-              
-          
-         
-            </div>
-        <div>
-    </div>
-      
+        <div class="notification-container__close">
+          <span id="closeNotification"></span>
+        </div>
+        <div class="notification-container__control-container">
+          <input
+            type="checkbox"
+            name="checkbox"
+            id="checkbox_id"
+            value="value"
+          />
+          <label for="checkbox_id">Enter</label>
+          <div class="notification-container__navigation">
+            <a
+              class="notification-container__prev"
+              href="#"
+              onclick="plusIndex(-1)"
+              >Prev</a
+            >
+            <ul
+              id="quickNavigation"
+              class="notification-container__quick-navigation"
+            >
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(1)"
+              ></span>
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(2)"
+              ></span>
+              <span
+                class="notification-container__dots active"
+                onclick="currentSlide(3)"
+              ></span>
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(4)"
+              ></span>
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(5)"
+              ></span>
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(6)"
+              ></span>
+              <span
+                class="notification-container__dots"
+                onclick="currentSlide(7)"
+              ></span>
+            </ul>
+            <a
+              class="notification-container__next"
+              href="#"
+              onclick="plusIndex(1)"
+              >Next</a
+            >
+          </div>
+        </div>
+      </div>
     </main>
-    <script src="script\script.js" charset="utf-8"></script>
-</body>
-
+    <!-- <script src="script\script.js" charset="utf-8"></script> -->
+  </body>
 </html>
