@@ -41,6 +41,10 @@ body {
   margin: 2% 0;
 }
 
+.main__description div:last-child {
+  display: none;
+}
+
 .main__show-current-day {
   width: 40%;
   display: flex;

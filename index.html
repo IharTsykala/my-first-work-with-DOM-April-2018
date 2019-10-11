@@ -12,23 +12,31 @@
       <h1>Static data base for days of the week</h1>
     </header>
     <main class="main">
-      <div class="main__description">
-        <p class="main__description__next">
-          If you want to see the next day, click “Next” or press “=>” on the
-          keyboard.
-        </p>
-        <p class="main__description__prev">
-          If you want to see the previous day, click “Prev” or press “<=” on the
-          keyboard.
-        </p>
-        <p class="main__description__esc">
-          If you want to close the window notification without changes, click
-          “X” or press “Esc” on the keyboard.
-        </p>
-        <p class="main__description__enter">
-          If you want to show information about your selected day, click “Enter”
-          or press “Enter” on the keyboard.
-        </p>
+      <div id="mainDescription" class="main__description">
+        <div>
+          <p class="main__description__next">
+            If you want to see the next day, click “Next” or press “=>” on the
+            keyboard.
+          </p>
+          <p class="main__description__prev">
+            If you want to see the previous day, click “Prev” or press “<=” on
+            the keyboard.
+          </p>
+          <p class="main__description__esc">
+            If you want to close the window notification without changes, click
+            “X” or press “Esc” on the keyboard.
+          </p>
+          <p class="main__description__enter">
+            If you want to show information about your selected day, click
+            “Enter” or press “Enter” on the keyboard.
+          </p>
+        </div>
+        <div>
+          <p class="main__description__next">
+            If you want to see the window notification, click on the picture or
+            press “Enter” on the keyboard.
+          </p>
+        </div>
       </div>
       <div id="showCurrentDay" class="main__show-current-day"></div>
       <div id="notificationContainer" class="notification-container">
@@ -53,51 +61,20 @@
             Enter
           </p>
           <div class="notification-container__navigation">
-            <a
-              class="notification-container__prev"
-              href="#"
-              onclick="getNextDay(-1)"
-              >Prev</a
-            >
+            <a id="prev" class="notification-container__prev" href="#">Prev</a>
             <ul
               id="quickNavigation"
               class="notification-container__quick-navigation"
             >
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(0)"
-              ></span>
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(1)"
-              ></span>
-              <span
-                class="notification-container__dots active"
-                onclick="defineCurrentDay(2)"
-              ></span>
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(3)"
-              ></span>
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(4)"
-              ></span>
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(5)"
-              ></span>
-              <span
-                class="notification-container__dots"
-                onclick="defineCurrentDay(6)"
-              ></span>
+              <span class="notification-container__dots"></span>
+              <span class="notification-container__dots"></span>
+              <span class="notification-container__dots active"></span>
+              <span class="notification-container__dots"></span>
+              <span class="notification-container__dots"></span>
+              <span class="notification-container__dots"></span>
+              <span class="notification-container__dots"></span>
             </ul>
-            <a
-              class="notification-container__next"
-              href="#"
-              onclick="getNextDay(1)"
-              >Next</a
-            >
+            <a id="next" class="notification-container__next" href="#">Next</a>
           </div>
         </div>
       </div>
