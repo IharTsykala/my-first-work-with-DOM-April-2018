@@ -30,12 +30,10 @@
           or press “Enter” on the keyboard.
         </p>
       </div>
-      <div class="main__show-current-day">
-        <p></p>
-      </div>
+      <div id="showCurrentDay" class="main__show-current-day"></div>
       <div id="notificationContainer" class="notification-container">
         <div class="notification-container__slides">
-          <h3 class="notification-container__head-slides"></h3>
+          <h3 id="nameDay" class="notification-container__head-slides"></h3>
           <p id="textSlides" class="notification-container__text-slides"></p>
         </div>
         <div class="notification-container__close">
@@ -48,12 +46,17 @@
             id="checkbox_id"
             value="value"
           />
-          <label for="checkbox_id">Enter</label>
+          <p
+            id="notificationContainerEnter"
+            class="notification-container__enter"
+          >
+            Enter
+          </p>
           <div class="notification-container__navigation">
             <a
               class="notification-container__prev"
               href="#"
-              onclick="plusIndex(-1)"
+              onclick="getNextDay(-1)"
               >Prev</a
             >
             <ul
@@ -62,43 +65,43 @@
             >
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(1)"
+                onclick="defineCurrentDay(0)"
               ></span>
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(2)"
+                onclick="defineCurrentDay(1)"
               ></span>
               <span
                 class="notification-container__dots active"
-                onclick="currentSlide(3)"
+                onclick="defineCurrentDay(2)"
               ></span>
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(4)"
+                onclick="defineCurrentDay(3)"
               ></span>
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(5)"
+                onclick="defineCurrentDay(4)"
               ></span>
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(6)"
+                onclick="defineCurrentDay(5)"
               ></span>
               <span
                 class="notification-container__dots"
-                onclick="currentSlide(7)"
+                onclick="defineCurrentDay(6)"
               ></span>
             </ul>
             <a
               class="notification-container__next"
               href="#"
-              onclick="plusIndex(1)"
+              onclick="getNextDay(1)"
               >Next</a
             >
           </div>
         </div>
       </div>
     </main>
-    <!-- <script src="script\script.js" charset="utf-8"></script> -->
+    <script src="script\script.js" charset="utf-8"></script>
   </body>
 </html>
