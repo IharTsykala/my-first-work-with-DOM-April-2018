@@ -1,8 +1,9 @@
 const showCurrentDay = document.getElementById("showCurrentDay");
-const picture = document.createElement("img");
-picture.src = "assets/img/AllDays.jpg";
-picture.alt = "days of the week";
-showCurrentDay.append(picture);
+const bigPicture = document.createElement("img");
+bigPicture.src = "assets/img/AllDays.jpg";
+bigPicture.alt = "days of the week";
+showCurrentDay.append(bigPicture);
+const smallPicture = document.querySelector("#imgSlides");
 
 const notificationContainer = document.getElementById("notificationContainer");
 const mainDescription = document.getElementById("mainDescription");
@@ -13,27 +14,27 @@ const nameDay = document.getElementById("nameDay");
 const quickNavigation = document.getElementById("quickNavigation");
 
 const week = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday"
+  { day: "Monday", url: "assets/img/Monday.jpg" },
+  { day: "Tuesday", url: "assets/img/Tuesday.jpg" },
+  { day: "Wednesday", url: "assets/img/Wednesday.jpg" },
+  { day: "Thursday", url: " assets/img/Thursday.jpg" },
+  { day: "Friday", url: "assets/img/Friday.jpg" },
+  { day: "Saturday", url: "assets/img/Saturday.jpg" },
+  { day: "Sunday", url: "assets/img/Sunday.jpg" }
 ];
 
 let currentDay = 2;
 
 setTimeout(() => {
-  picture.style.display = "none";
+  bigPicture.style.display = "none";
   notificationContainer.style.display = "flex";
 
   const close = flag => {
     if (!flag) {
-      picture.src = `assets/img/${week[currentDay]}.jpg`;
+      bigPicture.src = `${week[currentDay].url}`;
     }
     notificationContainer.style.display = "none";
-    picture.style.display = "block";
+    bigPicture.style.display = "block";
     mainDescription.children[0].style.display = "none";
     mainDescription.children[1].style.display = "flex";
     // const disableTips = localStorage.getItem("disableTips");
@@ -50,6 +51,10 @@ setTimeout(() => {
     close();
   });
 
+  smallPicture.addEventListener("click", () => {
+    close();
+  });
+
   const showDay = n => {
     if (n) {
       currentDay = n;
@@ -61,7 +66,9 @@ setTimeout(() => {
     if (currentDay < 0) {
       currentDay = week.length - 1;
     }
-    nameDay.innerHTML = week[currentDay];
+    nameDay.innerHTML = week[currentDay].day;
+    smallPicture.src = `${week[currentDay].url}`;
+    smallPicture.alt = `${week[currentDay].day}`;
 
     for (var i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
@@ -115,7 +122,7 @@ setTimeout(() => {
 
   const showNotification = () => {
     notificationContainer.style.display = "flex";
-    picture.style.display = "none";
+    bigPicture.style.display = "none";
     mainDescription.children[0].style.display = "block";
     mainDescription.children[1].style.display = "none";
   };
@@ -142,12 +149,11 @@ setTimeout(() => {
     if (notificationContainer.style.display === "flex") {
       checkKeyPress();
     } else {
-      console.log("1");
       showNotification();
     }
   });
 
-  picture.addEventListener("click", () => {
+  bigPicture.addEventListener("click", () => {
     showNotification();
   });
 }, 2000);
