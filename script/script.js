@@ -12,6 +12,7 @@ const enter = document.getElementById("notificationContainerEnter");
 const dots = document.getElementsByClassName("notification-container__dots");
 const nameDay = document.getElementById("nameDay");
 const quickNavigation = document.getElementById("quickNavigation");
+const checkbox_id = document.getElementById("checkbox_id");
 
 const week = [
   { day: "Monday", url: "assets/img/Monday.jpg" },
@@ -25,6 +26,8 @@ const week = [
 
 let currentDay = 2;
 
+console.log(localStorage.windowStorage);
+
 setTimeout(() => {
   bigPicture.style.display = "none";
   notificationContainer.style.display = "flex";
@@ -37,10 +40,16 @@ setTimeout(() => {
     bigPicture.style.display = "block";
     mainDescription.children[0].style.display = "none";
     mainDescription.children[1].style.display = "flex";
-    // const disableTips = localStorage.getItem("disableTips");
-    // if (checkbox_id.checked) {
-    //   localStorage.setItem("disableTips", "hidden");
-    // }
+    if (localStorage.length) {
+      windowStorage = localStorage.getItem("window");
+    }
+
+    if (checkbox_id.checked) {
+      localStorage.setItem("windowStorage", "none");
+      localStorage.setItem("currentDay", currentDay);
+    } else {
+      localStorage.clear();
+    }
   };
 
   closeNotification.addEventListener("click", () => {
@@ -56,6 +65,13 @@ setTimeout(() => {
   });
 
   const showDay = n => {
+    if (localStorage.notificationContainer) {
+      notificationContainer.style.display = localStorage.getItem(
+        "notificationContainer"
+      );
+      localStorage.clear();
+    }
+
     if (n) {
       currentDay = n;
     }
