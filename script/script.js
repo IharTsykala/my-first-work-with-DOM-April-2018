@@ -26,11 +26,19 @@ const week = [
 
 let currentDay = 2;
 
-console.log(localStorage.windowStorage);
+if (localStorage.currentDay) {
+  currentDay = +localStorage.currentDay;
+}
 
 setTimeout(() => {
   bigPicture.style.display = "none";
   notificationContainer.style.display = "flex";
+
+  checkbox_id.addEventListener("click", () => {
+    if (checkbox_id.checked) {
+      localStorage.setItem("currentDay", currentDay);
+    }
+  });
 
   const close = flag => {
     if (!flag) {
@@ -43,9 +51,7 @@ setTimeout(() => {
     if (localStorage.length) {
       windowStorage = localStorage.getItem("window");
     }
-
     if (checkbox_id.checked) {
-      localStorage.setItem("windowStorage", "none");
       localStorage.setItem("currentDay", currentDay);
     } else {
       localStorage.clear();
@@ -65,10 +71,9 @@ setTimeout(() => {
   });
 
   const showDay = n => {
-    if (localStorage.notificationContainer) {
-      notificationContainer.style.display = localStorage.getItem(
-        "notificationContainer"
-      );
+    if (checkbox_id.checked) {
+      localStorage.setItem("currentDay", currentDay);
+    } else {
       localStorage.clear();
     }
 
@@ -82,7 +87,7 @@ setTimeout(() => {
     if (currentDay < 0) {
       currentDay = week.length - 1;
     }
-    nameDay.innerHTML = week[currentDay].day;
+    nameDay.innerHTML = `${week[currentDay].day}`;
     smallPicture.src = `${week[currentDay].url}`;
     smallPicture.alt = `${week[currentDay].day}`;
 
