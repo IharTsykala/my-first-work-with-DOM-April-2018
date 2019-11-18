@@ -15,13 +15,13 @@ const quickNavigation = document.getElementById("quickNavigation");
 const checkbox_id = document.getElementById("checkbox_id");
 
 const week = [
-  { day: "Monday", url: "assets/img/Monday.jpg" },
-  { day: "Tuesday", url: "assets/img/Tuesday.jpg" },
-  { day: "Wednesday", url: "assets/img/Wednesday.jpg" },
-  { day: "Thursday", url: " assets/img/Thursday.jpg" },
-  { day: "Friday", url: "assets/img/Friday.jpg" },
-  { day: "Saturday", url: "assets/img/Saturday.jpg" },
-  { day: "Sunday", url: "assets/img/Sunday.jpg" }
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
 ];
 
 let currentDay = 2;
@@ -42,7 +42,7 @@ setTimeout(() => {
 
   const close = flag => {
     if (!flag) {
-      bigPicture.src = `${week[currentDay].url}`;
+      bigPicture.src = `assets/img/${week[currentDay]}.jpg`;
     }
     notificationContainer.style.display = "none";
     bigPicture.style.display = "block";
@@ -70,16 +70,16 @@ setTimeout(() => {
     close();
   });
 
-  const showDay = n => {
+  const checkbox = () => {
     if (checkbox_id.checked) {
       localStorage.setItem("currentDay", currentDay);
     } else {
       localStorage.clear();
     }
+  };
 
-    if (n) {
-      currentDay = n;
-    }
+  const defineCurrentDay = n => {
+    currentDay = n;
 
     if (currentDay > week.length - 1) {
       currentDay = 0;
@@ -87,14 +87,22 @@ setTimeout(() => {
     if (currentDay < 0) {
       currentDay = week.length - 1;
     }
-    nameDay.innerHTML = `${week[currentDay].day}`;
-    smallPicture.src = `${week[currentDay].url}`;
-    smallPicture.alt = `${week[currentDay].day}`;
+  };
 
+  const outputOnScreen = () => {
+    nameDay.innerHTML = `${week[currentDay]}`;
+    smallPicture.src = `assets/img/${week[currentDay]}.jpg`;
+    smallPicture.alt = `${week[currentDay]}`;
     for (var i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
     dots[currentDay].classList.add("active");
+  };
+
+  const showDay = n => {
+    checkbox();
+    defineCurrentDay(n);
+    outputOnScreen();
   };
 
   showDay(currentDay);
@@ -102,10 +110,9 @@ setTimeout(() => {
   const setActiveDots = e => {
     for (let i = 0; i < quickNavigation.children.length; i++) {
       if (quickNavigation.children[i] === e.target) {
-        for (let i = 0; i < quickNavigation.children.length; i++) {
-          quickNavigation.children[i].classList.remove("active");
-        }
+        quickNavigation.children[currentDay].classList.remove("active");
         e.target.classList.add("active");
+        showDay(i);
       }
     }
   };
@@ -127,18 +134,6 @@ setTimeout(() => {
 
   next.addEventListener("click", () => {
     getNextDay(1);
-  });
-
-  const defineCurrentDay = n => {
-    showDay((currentDay = n));
-  };
-
-  quickNavigation.addEventListener("click", e => {
-    for (let i = 0; i < quickNavigation.children.length; i++) {
-      if (quickNavigation.children[i] === e.target) {
-        defineCurrentDay(i);
-      }
-    }
   });
 
   const showNotification = () => {
